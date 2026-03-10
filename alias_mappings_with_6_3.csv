@@ -1,0 +1,15 @@
+column_name,table_name,alias_type
+company_name,general_information,COMPANY_ALIAS
+project_name,general_information,PROJECT_ALIAS
+target_name,exploration_target_evolution,TARGET_ALIAS
+deposit,resource_table,DEPOSIT_ALIAS
+mine_name,mining_general,MINE_ALIAS
+country,general_information,COUNTRY_ALIAS
+region,general_information,REGION_ALIAS
+province,general_information,PROVINCE_ALIAS
+state,general_information,STATE_ALIAS
+location,general_information,LOCATION_ALIAS
+commodity,significant_intercepts,COMMODITY_ALIAS
+commodity,resource_table,COMMODITY_ALIAS
+commodity,critical_minerals_project_info,COMMODITY_ALIAS
+mineral,lithology_alteration_summary,MINERAL_ALIAS
