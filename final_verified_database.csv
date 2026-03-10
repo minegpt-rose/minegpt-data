@@ -1,0 +1,160 @@
+table_name,column_name,type,notes
+relationships,report_number,TEXT (PK),Unique ID generated in Excel or Python
+relationships,company_name,text,From project_list
+relationships,date_filed,date,From project_list
+relationships,document_type,text,From project_list
+relationships,project_name,TEXT,Micro-prompt to openai-pinecone
+critical_minerals_metallurgy_sc,report_number,TEXT (PK),Links to general_information
+critical_minerals_metallurgy_sc,project_name,TEXT,Extracted from report
+critical_minerals_metallurgy_sc,report_year,INT,Year of report (parsed from effective/filing date)
+critical_minerals_metallurgy_sc,commodity_focus,TEXT,Primary commodity
+critical_minerals_metallurgy_sc,deposit_type,TEXT,From geology section
+critical_minerals_market_plexity,report_number,TEXT (PK),FK to general_information
+critical_minerals_market_plexity,mineral_name,TEXT,"Name of mineral (e.g., Gold, Antimony)"
+critical_minerals_market_plexity,classification,TEXT,"One of: Primary, Co-Product, By-Product, Trace Potential, Critical, Security-Sensitive"
+critical_minerals_market_plexity,geological_association,TEXT,Host mineralization info
+critical_minerals_market_plexity,mentioned_in_section,TEXT,"Where in the report it is mentioned (e.g., Resource Section)"
+cost_table,report_number,TEXT (PK),FK to general_information
+cost_table,processing_method,TEXT,"Heap leach, flotation, etc."
+cost_table,recovery_rates,TEXT,Include as structured string or JSON if needed
+cost_table,penalties_impurities,TEXT,"E.g., arsenic, antimony"
+cost_table,byproduct_recovery_potential,TEXT,Notes on economic recovery potential
+financial_table,report_number,TEXT (PK),FK to general_information
+financial_table,has_critical_minerals,BOOLEAN,If any minerals in the report are listed on critical lists
+financial_table,has_security_sensitive_minerals,BOOLEAN,If any minerals are China-dominated or under export controls
+financial_table,government_incentives,TEXT,"Mentioned incentives for development, if any"
+financial_metrics_table,report_number,TEXT (PK),FK to general_information
+financial_metrics_table,total_initial_direct_capex,NUMERIC,Total initial direct capital expenditure
+financial_metrics_table,total_initial_direct_capex_unit,TEXT,Unit for total initial direct capex
+financial_metrics_table,total_initial_indirect_capex,NUMERIC,Total initial direct capital expenditure
+financial_metrics_table,total_initial_indirect_capex_unit,TEXT,Unit for total initial direct capex
+conversion_rates_table,report_number,TEXT (PK),FK to general_information
+conversion_rates_table,npv_pre_tax,NUMERIC,Net Present Value (pre-tax)
+conversion_rates_table,npv_pre_tax_unit,TEXT,Currency or unit for pre-tax NPV
+conversion_rates_table,npv_post_tax,NUMERIC,Net Present Value (post-tax)
+conversion_rates_table,npv_post_tax_unit,TEXT,Currency or unit for post-tax NPV
+metal_price_table,report_number,TEXT (PK),FK to general_information
+metal_price_table,metric,TEXT,"Metric or risk description (e.g., Sensitivity to Gold Price)"
+metal_price_table,value,NUMERIC,Associated value
+metal_price_table,unit,TEXT,"Unit (e.g., USD/oz, NA)"
+metal_price_table,cad_per_unit,NUMERIC,CAD equivalent value
+layout_summary,report_number,TEXT (PK),FK to general_information
+layout_summary,term,TEXT,"Conversion term (e.g., Currency/CAD, Currency/USD)"
+layout_summary,currency,TEXT,"Currency pair (e.g., CAD/USD)"
+layout_summary,value,NUMERIC,Conversion rate or value
+layout_summary,currency_cad,NUMERIC,Currency/CAD
+layout_facilities,report_number,TEXT (PK),FK to general_information
+layout_facilities,metal_mineral,TEXT,"Name of the metal or mineral (e.g., Gold, Copper)"
+layout_facilities,value,NUMERIC,Price value
+layout_facilities,currency_or_unit,TEXT,"Currency or unit (e.g., USD/oz, USD/t)"
+layout_facilities,cad_per_unit,NUMERIC,CAD equivalent metal price
+infrastructure_distances,report_number,TEXT (PK),FK to general_information
+infrastructure_distances,has_process_plant,BOOLEAN,Process plant present in layout
+infrastructure_distances,has_primary_crusher,BOOLEAN,Primary crusher present
+infrastructure_distances,has_secondary_crusher,BOOLEAN,Secondary crusher present
+infrastructure_distances,has_tertiary_crusher,BOOLEAN,Tertiary crusher present
+general_information,report_number,TEXT,FK to general_information
+general_information,target_type,TEXT,"Type of target (e.g., geophysical anomaly)"
+general_information,year_first_drilled,TEXT,First year drilling occurred at this target
+general_information,resource_defined,INTEGER,Whether included in a mineral resource estimate
+general_information,drill_results_supportive,BOOLEAN,Whether results were supportive of target
+building_list,report_number,TEXT (PK),FK to general_information
+building_list,facility_type,TEXT,"Facility type (e.g., Process Plant, Tailings Dam)"
+building_list,coordinates,TEXT,Coordinates if available (UTM or Lat/Long)
+building_list,footprint_m2,NUMERIC,Footprint in square meters
+building_list,capacity,NUMERIC,"Capacity if applicable (people, MW, etc.)"
+process_parameters,report_number,TEXT (PK),FK to general_information
+process_parameters,from_infrastructure,TEXT,"Starting infrastructure type (e.g., Open Pit)"
+process_parameters,to_infrastructure,TEXT,"Destination infrastructure (e.g., Process Plant)"
+process_parameters,distance_km,NUMERIC,Distance along road/path in kilometers
+process_equipment,report_number,TEXT (PK),FK to general_information
+process_equipment,building_name,TEXT,Building or facility name
+process_equipment,building_type,TEXT,"Type of construction (e.g., prefabricated, modular)"
+process_equipment,footprint_m2,NUMERIC,Footprint area in square meters
+process_equipment,length_m,NUMERIC,Length in meters
+process_recovery,report_number,TEXT (PK),FK to general_information
+process_recovery,primary_crushing_tpd,NUMERIC,Primary crushing throughput (tpd)
+process_recovery,primary_crushing_mtpa,NUMERIC,Primary crushing throughput (mtpa)
+process_recovery,secondary_crushing_tpd,NUMERIC,Secondary crushing throughput (tpd)
+process_recovery,secondary_crushing_mtpa,NUMERIC,Secondary crushing throughput (mtpa)
+mining_rates,report_number,TEXT (PK),FK to general_information
+mining_rates,equipment_type,TEXT,"Main equipment type (e.g., Crusher, Mill, Filter)"
+mining_rates,equipment_subtype,TEXT,"Subtype (e.g., Jaw, Cone, SAG)"
+mining_rates,equipment_size,FLOAT,Size or capacity of the equipment
+mining_rates,equipment_unit,TEXT,"Unit of equipment size (e.g., mm, MW, tpd)"
+mining_general,report_number,TEXT (PK),FK to general_information
+mining_general,metal,TEXT,"Metal or mineral recovered (e.g., Au, Cu, Zn)"
+mining_general,product_type,TEXT,"Type (e.g., primary, by-product, trace)"
+mining_general,head_grade,FLOAT,Head grade value
+mining_general,head_grade_unit,TEXT,"Head grade unit (e.g., g/t, %)"
+mining_equipment,report_number,TEXT (PK),FK to general_information
+mining_equipment,rate_driver,TEXT,"Driver of the mining rate (e.g., Mining Rate, Ore Mined, Waste Mined)"
+mining_equipment,daily_tpd,FLOAT,Daily rate in tonnes per day (tpd)
+mining_equipment,annual_tpy,FLOAT,Annual rate in tonnes per year (tpy)
+mining_equipment,total_lom_t,FLOAT,Total over life of mine in tonnes
+cost_drivers,report_number,TEXT (PK),FK to general_information
+cost_drivers,mine_name,TEXT,"Mine or deposit name. If more than one underground mine is present, a unique mine name or number to be applied to each"
+cost_drivers,year_mining_commences,TEXT,"Relative year mining starts (e.g., Year 1)"
+cost_drivers,calendar_year_mining_commences,INTEGER,Absolute calendar year when mining begins
+cost_drivers,stripping_ratio,TEXT,Stripping ratio
+schedule,report_number,TEXT (PK),FK to general_information
+schedule,equipment_type,TEXT,General equipment category
+schedule,equipment_subtype,TEXT,"Specific type (e.g., Jaw, Cone, Dozer)"
+schedule,equipment_size,FLOAT,Equipment size or capacity
+schedule,equipment_unit,TEXT,"Unit of size (e.g., kW, t)"
+long_lead,report_number,TEXT (PK),FK to general_information
+long_lead,cost_driver_category,TEXT,"Main cost category (e.g., Earthworks, Mining, Concrete)"
+long_lead,cost_driver_subtype,TEXT,Subtype or breakdown of the cost driver if applicable
+long_lead,unit_cost_value,"NUMERIC(18,6)",Raw numeric value for the unit cost
+long_lead,unit_cost_unit,TEXT,"Unit for the unit cost (e.g., USD/t, $/mÂ³)"
+exploration_target_evolution,report_number,TEXT (PK),FK to general_information
+exploration_target_evolution,alteration_types,TEXT,"Common alteration styles (e.g., chlorite, silica)"
+exploration_target_evolution,vein_types,TEXT,Description of vein textures or minerals
+exploration_target_evolution,host_rock,TEXT,Host rock to mineralization
+exploration_target_evolution,structural_controls,TEXT,Structural features controlling mineralization
+environmental,report_number,TEXT (PK),FK to general_information
+environmental,schedule_item,TEXT,"High-level milestone item (e.g., Feasibility Study, EIA Permit, etc.)"
+environmental,start_date,DATE,Start date of the schedule item
+environmental,end_date,DATE,End date of the schedule item
+risks,report_number,TEXT (PK),FK to general_information
+risks,long_lead_item,TEXT,"Long lead procurement item (e.g., Primary Crusher, Mill, etc.)"
+risks,start_date,DATE,Start date of the procurement or delivery
+risks,end_date,DATE,End date of the procurement or delivery
+drill_programs,report_number,TEXT (PK),FK to general_information
+drill_programs,metric,TEXT,"Environmental-related metric (e.g., Permitting Timeline, Closure Cost)"
+drill_programs,description,TEXT,Detailed description of the metric
+drill_programs,unit,TEXT,Currency or units associated with the metric
+lithology_alteration_summary,report_number,TEXT (PK),FK to general_information
+lithology_alteration_summary,risk_type,TEXT,"Type of risk (geotechnical, economic, environmental)"
+lithology_alteration_summary,quantified_impact,TEXT,"Quantified or described impact (e.g., % change in IRR for gold price drop)"
+lithology_alteration_summary,mitigation_strategy,TEXT,"Mitigation strategy as stated in the report, if any"
+significant_intercepts,report_number,TEXT,FK to general_information
+significant_intercepts,from_m,TEXT,Starting depth of intercept (m)
+significant_intercepts,to_m,NUMERIC,Ending depth of intercept (m)
+significant_intercepts,interval_m,NUMERIC,Length of intercept (m)
+significant_intercepts,"Commodity name (e.g., Gold, Copper)",NUMERIC,grade
+qps_table,report_number,TEXT (PK),FK to general_information
+qps_table,Campaign start date,TEXT,Campaign end date
+qps_table,start_date,DATE,purpose
+qps_table,end_date,DATE,"Purpose of campaign (e.g., Infill, Step-out)"
+qps_table,drill_type,TEXT,"Type of drilling (e.g., Diamond, RC)"
+resource_table,report_number,TEXT (PK),Links to general_information
+resource_table,report_number_B,text,Target report number
+resource_table,source_report,TEXT,"e.g., report A"
+resource_table,target_report,TEXT,"e.g., report B"
+resource_table,relationship_type,TEXT,"e.g., ""similar metallurgy"", ""shared jurisdiction"""
+cost_financial_parameters,report_number,TEXT (PK),Links to general_information
+cost_financial_parameters,name,TEXT,Qualified Person's full name
+cost_financial_parameters,designation,TEXT,"Designation (e.g., P.Eng., Ph.D., etc.)"
+cost_financial_parameters,field_of_expertise,TEXT,"Field of expertise (e.g., Mining Engineer, Geologist)"
+cost_financial_parameters,company,TEXT,Company or consulting firm
+critical_minerals_project_info,report_number,TEXT (PK),Links to general_information
+critical_minerals_project_info,exploration_classification,TEXT,"Exploration or Reserve classification (e.g., Mineral Resource_C1, Mineral Reserve_C2)"
+critical_minerals_project_info,measure,TEXT,"Measurement category (e.g., Inferred, Grade, etc.)"
+critical_minerals_project_info,commodity,TEXT,"Commodity type (e.g., Gold, Lithium)"
+critical_minerals_project_info,deposit,TEXT,Deposit name or number
+critical_minerals_exctracted_sc,report_number,TEXT (PK),Links to general_information
+critical_minerals_exctracted_sc,category,TEXT,"Cost category (e.g., CAPEX, OPEX, Revenue)"
+critical_minerals_exctracted_sc,parameter,TEXT,"Specific financial parameter (e.g., Total Revenue)"
+critical_minerals_exctracted_sc,currency,TEXT,"Currency type (e.g., USD)"
+critical_minerals_exctracted_sc,value,NUMERIC,Value of the parameter
