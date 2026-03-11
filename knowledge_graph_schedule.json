@@ -1,0 +1,21 @@
+{
+  "hourly_updates": {
+    "enabled": true,
+    "last_run": "2026-03-11T13:30:00Z",
+    "next_run": "2026-03-11T14:30:00Z",
+    "command": "message send --to U0AFY9VFTAN --message 'Knowledge Graph Progress: Edge dictionary 80% complete, alias resolver foundation built'",
+    "status": "active"
+  },
+  "git_commits": {
+    "enabled": true,
+    "frequency_minutes": 30,
+    "last_commit": "2026-03-11T13:15:00Z",
+    "next_commit": "2026-03-11T13:45:00Z"
+  },
+  "daily_report": {
+    "enabled": true,
+    "time": "18:00",
+    "last_report": null,
+    "next_report": "2026-03-11T18:00:00Z"
+  }
+}
