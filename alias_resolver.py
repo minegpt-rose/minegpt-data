@@ -28,12 +28,23 @@ class AliasResolver:
             'FNV': 'Franco-Nevada',
             'WPM': 'Wheaton Precious Metals',
             'SCCO': 'Southern Copper',
-            'VALE': 'Vale SA',
+            'VALE': 'V极ale SA',
             'BHP Group': 'BHP',
+            'BHP Group Limited': 'BHP',
             'Rio Tinto': 'RIO',
+            'Rio Tinto Group': 'RIO',
             'Freeport-McMoRan': 'FCX',
+            'Freeport': 'FCX',
             'Newmont': 'NEM',
-            'Barrick Gold': 'GOLD'
+            'Newmont Goldcorp': 'NEM',
+            'Barrick': 'GOLD',
+            'Barrick Gold Corporation': 'GOLD',
+            'Agnico Eagle': 'AEM',
+            'Franco Nevada': 'FNV',
+            'Wheaton': 'WPM',
+            'Southern Copper Corporation': 'SCCO',
+            'Vale': 'VALE',
+            'Vale S.A.': 'VALE'
         }
     
     def _load_commodity_aliases(self) -> Dict[str, str]:
