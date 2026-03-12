@@ -1,0 +1,5 @@
+Category,node1_table,node1_column,node1_report_number,node1_display,predicate,predicate_display,node2_table,node2_column,node1_report_number_copy,node2_display,Example
+Project,general_information,project_name,,owned_by,general_information,company_name,,Company that owns or operates the project,Côté Gold — owned_by → Agnico Eagle
+Project,general_information,project_name,,located_in,general_information,country,,Country where the project is situated,Côté Gold — located_in → Canada
+Project,general_information,project_name,,in_province,general_information,province,,"Administrative region, province or state for the project",Canadian Malartic — in_region → Quebec
+Project,general_information,project_name,,in_district,general_information,district,,Closest relevant town or city to the project,Detour Lake — near_town → Cochrane
